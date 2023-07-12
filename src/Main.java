@@ -4,6 +4,15 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.ServiceLoader;
 
+/**
+ * <description>
+ *     This program demonstrates how service loaders work
+ * </description>
+ * @author Konstantine Vashlomidze
+ * @version 0.0.1  12-07-2023
+ */
+
+
 public class Main {
     public static ServiceLoader<Cipher> cipherLoader = ServiceLoader.load(Cipher.class);
 
@@ -31,6 +40,7 @@ public class Main {
 
     public static Cipher getCipher(int minStrength)
     {
+        // Find desired encryption algorithm, with minimal competence strength
         for (Cipher cipher: cipherLoader) // Implicitly calls cipherLoader.iterator()
         {
             if (cipher.strength() >= minStrength) return cipher;
